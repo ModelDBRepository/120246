@@ -48,7 +48,7 @@ Par  K_mCa=1380.0
 Par  Km_Nai=21.0
 Par  v1=4.5, v2=1.7E-5, v3=0.45
 Par  k_plus_c=0.0090
-Par  k_minus_ltrpn=0.196
+Par  k_minus_lt=0.196
 Par  g_Cab=3.67E-4
 Par  k_plus_b=0.00405
 Par  k_plus_a=0.006075
@@ -56,15 +56,15 @@ Par  Km_up=0.5
 Par  K_mNa=87500.0
 Par  Km_Cl=10.0
 Par  CSQN_tot=15000.0
-Par  k_minus_htrpn	=3.2E-5
+Par  k_minus_ht	=3.2E-5
 Par  Km_pCa=0.5
-Par  k_plus_ltrpn=0.0327
+Par  k_plus_lt=0.0327
 Par  Acap=1.534E-4
 Par  g_Na=13.0, g_CaL=1.51729, g_Ks=0.000575, g_Kr=0.0078, g_Kur=0.0016
 Par  g_ClCa=10.0
 Par  Vss=1.485E-9
 Par  k_NaCa=992.8
-Par  k_plus_htrpn=0.00237
+Par  k_plus_ht=0.00237
 Par  Ko=5400.0, Cao=1800.0
 Par  tau_xfer=8.0
 Par  k_sat	=0.1
@@ -153,7 +153,7 @@ C_K0 = (1.0 - (C_K1 + C_K2 + O_K + I_K))
 J_tr = ((CaNSR - CaJSR) / tau_tr)
 alpha_a1= (0.013733 * exp((0.038198 * V)))
 alpha_a0 = (0.022348 * exp((0.01176 * V)))
-J_trpn = ( - ((k_minus_htrpn * HTRPN_Ca) + (k_minus_ltrpn * LTRPN_Ca)) + (k_plus_htrpn * Cai * (HTRPN_tot - HTRPN_Ca)) + (k_plus_ltrpn * Cai * (LTRPN_tot - LTRPN_Ca)))
+J_trpn = ( - ((k_minus_ht * HTRPN_Ca) + (k_minus_lt * LTRPN_Ca)) + (k_plus_ht * Cai * (HTRPN_tot - HTRPN_Ca)) + (k_plus_lt * Cai * (LTRPN_tot - LTRPN_Ca)))
 C_Na3 = (1.0 - (O_Na + C_Na1 + C_Na2 + IF_Na + I1_Na + I2_Na + IC_Na2 + IC_Na3))
 
 i_Na=	 (g_Na * O_Na * (V - E_Na))
@@ -165,8 +165,8 @@ Cass'=(Bss * ((J_rel * VJSR / Vss) - ((J_xfer * Vmyo / Vss) + (i_CaL * Acap * Cm
 CaJSR'=(BJSR * (J_tr - J_rel))
 CaNSR'=(((J_up - J_leak) * Vmyo / VNSR) - (J_tr * VJSR / VNSR))
 P_RyR'=( - (0.04 * P_RyR) - (0.1 * exp( - (0.0015432098765432098 * ((-5.0 + V)^2.0))) * i_CaL / i_CaL_max))
-LTRPN_Ca'=((k_plus_ltrpn * Cai * (LTRPN_tot - LTRPN_Ca)) - (k_minus_ltrpn * LTRPN_Ca))
-HTRPN_Ca'=((k_plus_htrpn * Cai * (HTRPN_tot - HTRPN_Ca)) - (k_minus_htrpn * HTRPN_Ca))
+LTRPN_Ca'=((k_plus_lt * Cai * (LTRPN_tot - LTRPN_Ca)) - (k_minus_lt * LTRPN_Ca))
+HTRPN_Ca'=((k_plus_ht * Cai * (HTRPN_tot - HTRPN_Ca)) - (k_minus_ht * HTRPN_Ca))
 O1'=( - ((k_minus_a * O1) + (k_plus_b * (Cass^m) * O1) + (k_plus_c * O1)) + (k_plus_a * (Cass^n) * P_C1) + (k_minus_b * O2) + (k_minus_c * P_C2))
 O2'=((k_plus_b * (Cass^m) * O1) - (k_minus_b * O2))
 P_C2'=((k_plus_c * O1) - (k_minus_c * P_C2))
